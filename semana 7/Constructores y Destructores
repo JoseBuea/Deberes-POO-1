@@ -1,0 +1,47 @@
+class CuentaBancaria:
+    """
+    Clase que representa una cuenta bancaria
+    y demuestra el uso de constructores y destructores.
+    """
+
+    def __init__(self, titular, saldo_inicial):
+        """
+        Constructor:
+        Se ejecuta automáticamente cuando se crea un objeto.
+        Inicializa los atributos de la cuenta.
+        """
+        self.titular = titular
+        self.saldo = saldo_inicial
+        print(f"Constructor ejecutado: Cuenta creada para {self.titular} con saldo ${self.saldo}")
+
+    def depositar(self, monto):
+        """
+        Método para depositar dinero en la cuenta.
+        """
+        self.saldo += monto
+        print(f"Depósito realizado. Nuevo saldo: ${self.saldo}")
+
+    def retirar(self, monto):
+        """
+        Método para retirar dinero de la cuenta.
+        """
+        if monto <= self.saldo:
+            self.saldo -= monto
+            print(f"Retiro realizado. Nuevo saldo: ${self.saldo}")
+        else:
+            print("Fondos insuficientes.")
+
+    def __del__(self):
+        """
+        Destructor:
+        Se ejecuta cuando el objeto es eliminado
+        o cuando el programa finaliza.
+        """
+        print(f"Destructor ejecutado: Cuenta de {self.titular} eliminada.")
+
+
+# Programa principal
+if __name__ == "__main__":
+    cuenta = CuentaBancaria("jose bravo", 700)
+    cuenta.depositar(200)
+    cuenta.retirar(150)
